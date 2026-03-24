@@ -10,14 +10,14 @@ from dotenv import load_dotenv
 # Carrega variáveis de ambiente (.env)
 load_dotenv()
 
-# Configuração de Logging (Padrão Omenortep-AI)
+# Configuração de Logging (Padrão Petrodora-AI)
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-class OmenortepSynthGenerator:
+class PetrodoraSynthGenerator:
     """
     Gerador de dados sintéticos para especialização de LLMs no domínio de O&G.
     Utiliza OpenAI (GPT-4o) para transformar texto extraído em pares de instrução/resposta.
@@ -138,13 +138,13 @@ class OmenortepSynthGenerator:
             logger.warning("Nenhum dado sintético foi gerado.")
 
 if __name__ == "__main__":
-    # Caminhos Omenortep-AI
+    # Caminhos Petrodora-AI
     ROOT_DIR = Path(__file__).parent.parent
     IN_FILE = ROOT_DIR / "data" / "processed" / "processed_knowledge.jsonl"
     OUT_FILE = ROOT_DIR / "data" / "processed" / "training_data.jsonl"
 
     try:
-        generator = OmenortepSynthGenerator()
+        generator = PetrodoraSynthGenerator()
         generator.run(IN_FILE, OUT_FILE)
     except Exception as e:
         logger.error(f"Erro fatal: {str(e)}")

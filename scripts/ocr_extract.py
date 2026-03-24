@@ -13,14 +13,14 @@ from docling.datamodel.pipeline_options import PdfPipelineOptions
 # Desativa alertas de symlinks no Windows para evitar poluição visual nos logs
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 
-# Configuração de Logging (Padrão de Governança Omenortep-AI)
+# Configuração de Logging (Padrão de Governança Petrodora-AI)
 logging.basicConfig(
     level=logging.INFO, 
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-class OmenortepExtractor:
+class PetrodoraExtractor:
     """
     Extrator de alta precisão para documentos de Engenharia de Petróleo.
     Utiliza Docling com aceleração GPU para manter hierarquia de tabelas e layouts complexos.
@@ -146,7 +146,7 @@ class OmenortepExtractor:
         """
         Executa o pipeline completo de ETL para todos os arquivos PDF no diretório RAW.
         """
-        logger.info("Iniciando Fluxo de Extração Omenortep-AI")
+        logger.info("Iniciando Fluxo de Extração Petrodora-AI")
         
         pdf_list = list(self.raw_path.glob("*.pdf"))
         if not pdf_list:
@@ -182,5 +182,5 @@ if __name__ == "__main__":
     INPUT_DIR = ROOT_DIR / "data" / "raw"
     OUTPUT_DIR = ROOT_DIR / "data" / "processed"
 
-    extractor = OmenortepExtractor(INPUT_DIR, OUTPUT_DIR)
+    extractor = PetrodoraExtractor(INPUT_DIR, OUTPUT_DIR)
     extractor.run()

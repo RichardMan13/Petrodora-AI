@@ -1,5 +1,5 @@
 """
-Omenortep-AI: Phi-3 Fine-Tuning Script with Unsloth & MLflow
+Petrodora-AI: Phi-3 Fine-Tuning Script with Unsloth & MLflow
 Purpose: Fine-tune Phi-3 Mini for O&G specialization using the Refined Training Data.
 Author: Antigravity Assistant
 """
@@ -19,10 +19,10 @@ from pathlib import Path
 # Carrega variáveis (.env) para DagsHub/MLflow
 load_dotenv()
 
-def train_omenortep():
+def train_petrodora():
     # 1. Configurar Tracking via DagsHub (MLOps)
     # Garante que o experimento apareça no DagsHub
-    dagshub.init(repo_owner="RichardMan13", repo_name="Omenortep-AI", mlflow=True)
+    dagshub.init(repo_owner="RichardMan13", repo_name="Petrodora-AI", mlflow=True)
     
     # 2. Configurações do Modelo
     model_name = "unsloth/phi-3-mini-4k-instruct-bnb-4bit"
@@ -104,7 +104,7 @@ def train_omenortep():
         mlflow.log_param("max_steps", 60)
         mlflow.log_param("lora_r", 16)
         
-        print("\n[INFO] Iniciando Fine-Tuning do Omenortep-AI...")
+        print("\n[INFO] Iniciando Fine-Tuning do Petrodora-AI...")
         trainer.train()
         
         # 7. Salvar e Exportar (Formato Unsloth)
@@ -117,4 +117,4 @@ def train_omenortep():
         # mlflow.log_artifact(model_save_path)
 
 if __name__ == "__main__":
-    train_omenortep()
+    train_petrodora()

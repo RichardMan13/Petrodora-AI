@@ -1,5 +1,5 @@
 """
-Omenortep-AI: Model Evaluation & Benchmark Script (Full Production Version)
+Petrodora-AI: Model Evaluation & Benchmark Script (Full Production Version)
 Covers: Fase 5 (Golden Dataset Evaluation) + Fase 6 (MLOps & Monitoring)
 
 Metricas implementadas:
@@ -35,7 +35,7 @@ from sentence_transformers import SentenceTransformer, util
 
 # Parametros de Governanca
 SIMILARITY_TRIGGER_THRESHOLD: float = 0.50
-MODEL_NAME: str = "omenortep-v1"
+MODEL_NAME: str = "petrodora-v1"
 RUN_VERSION: str = "v1.0-Phi3-Basic"
 
 
@@ -185,7 +185,7 @@ def _generate_evidently_report(
 
     Arquitetura:
     - reference_data: respostas HUMANAS do Golden Dataset (padrao de qualidade).
-    - current_data  : respostas geradas pela IA (Omenortep-v1).
+    - current_data  : respostas geradas pela IA (Petrodora-v1).
 
     O Evidently compara as distribuicoes dos descritores entre os dois grupos,
     permitindo detectar drift de qualidade (ex: IA mais verbosa, mais neutra, etc.).
@@ -239,7 +239,7 @@ def _generate_evidently_report(
 
 def run_evaluation() -> None:
     """
-    Pipeline principal de avaliacao do modelo Omenortep-AI.
+    Pipeline principal de avaliacao do modelo Petrodora-AI.
     Executa ROUGE, Similarity Score, Length Drift e registra no MLflow.
     """
     load_dotenv()
@@ -310,7 +310,7 @@ def run_evaluation() -> None:
     if mlflow_uri:
         print(f"\n[INFO] Registrando metricas no MLflow: {mlflow_uri}")
         mlflow.set_tracking_uri(mlflow_uri)
-        mlflow.set_experiment("omenortep-benchmark")
+        mlflow.set_experiment("petrodora-benchmark")
 
         with mlflow.start_run(run_name=RUN_VERSION):
             # Metricas ROUGE
@@ -338,7 +338,7 @@ def run_evaluation() -> None:
 
     # --- Sumario Final ---
     print("\n" + "=" * 50)
-    print("SUMARIO DO BENCHMARK - OMENORTEP-AI")
+    print("SUMARIO DO BENCHMARK - PETRODORA-AI")
     print("=" * 50)
     print(f"  Versao:          {RUN_VERSION}")
     print(f"  Total Perguntas: {len(df)}")

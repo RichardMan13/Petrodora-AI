@@ -52,7 +52,7 @@ def split_dataset(input_path: Path, training_path: Path, golden_path: Path, gold
     logger.info(f"Training Dataset salvo: {len(training_dataset)} entradas em {training_path}")
 
 if __name__ == "__main__":
-    # Caminhos Omenortep-AI
+    # Caminhos Petrodora-AI
     ROOT_DIR = Path(__file__).parent.parent
     INPUT = ROOT_DIR / "data" / "processed" / "training_data.jsonl"
     TRAIN_OUT = ROOT_DIR / "data" / "processed" / "training_data.jsonl"

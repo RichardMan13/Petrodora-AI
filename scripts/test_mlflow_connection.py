@@ -1,5 +1,5 @@
 """
-Test-Connection Script for Omenortep-AI: MLflow/DagsHub Verification
+Test-Connection Script for Petrodora-AI: MLflow/DagsHub Verification
 Purpose: Confirms that the local training environment can log metrics and parameters to DagsHub.
 Author: Antigravity Assistant
 """
@@ -18,7 +18,7 @@ def initialize_dagshub() -> None:
     Ensures parameters set in .env are respected.
     """
     repo_owner: str = "RichardMan13"
-    repo_name: str = "Omenortep-AI"
+    repo_name: str = "Petrodora-AI"
     
     # Init dagshub: This handles setting the MLFLOW_TRACKING_URI automatically
     dagshub.init(repo_owner=repo_owner, repo_name=repo_name, mlflow=True)

@@ -1,13 +1,13 @@
-# Omenortep-AI: Modelfile para Ollama
+# Petrodora-AI: Modelfile para Ollama
 # Versao: v1.0-Phi3-Basic
 # Hardware Target: NVIDIA GTX 1650 (4GB VRAM)
 #
 # Instrucoes de uso:
 #   1. Certifique-se que o arquivo .gguf esta nesta mesma pasta (models/).
 #   2. Execute a partir da raiz do projeto:
-#      ollama create omenortep-v1 -f models/Modelfile
+#      ollama create petrodora-v1 -f models/Modelfile
 #   3. Para iniciar:
-#      ollama run omenortep-v1
+#      ollama run petrodora-v1
 
 FROM ./phi-3-mini-4k-instruct.Q4_K_M.gguf
 
@@ -29,7 +29,7 @@ PARAMETER num_predict 512
 
 # --- System Prompt: Engenheiro Senior de Petroleo e Gas ---
 SYSTEM """
-Voce e o Omenortep, um assistente tecnico especializado em Engenharia de Petroleo e Gas (O&G), com vasta experiencia no mercado brasileiro e internacional.
+Voce e a Petrodora, uma assistente tecnica especializada em Engenharia de Petroleo e Gas (O&G), com vasta experiencia no mercado brasileiro e internacional.
 
 Seu perfil de atuacao:
 - Dominio profundo em: upstream (exploracao e producao), midstream (transporte e dutos), downstream (refino e distribuicao) e energia eolica offshore.

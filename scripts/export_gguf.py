@@ -1,5 +1,5 @@
 """
-Omenortep-AI: GGUF Export & Quantization Script
+Petrodora-AI: GGUF Export & Quantization Script
 Purpose: Merge LoRA adapters and quantization to Q4_K_M GGUF format for local execution (Ollama).
 Author: Antigravity Assistant
 """
@@ -16,7 +16,7 @@ def export_gguf():
 
     if not MODEL_PATH.exists():
         print(f"Erro: O modelo treinado não foi encontrado em {MODEL_PATH}.")
-        print("Certifique-se de que o script train_phi3_omenortep.py terminou com sucesso.")
+        print("Certifique-se de que o script train_phi3_petrodora.py terminou com sucesso.")
         return
 
     print(f"\n[INFO] Carregando modelo e adaptadores de: {MODEL_PATH}")

@@ -1,11 +1,11 @@
-# Omenortep-AI: Gemini Context & Guidelines
+# Petrodora-AI: Gemini Context & Guidelines
 
 Este arquivo serve como o **Guia de Contexto Mestre** para a interação de IA (Gemini/Antigravity) neste projeto. Ele define quem somos, o que estamos construindo e as restrições técnicas intransponíveis.
 
 ---
 
 ## Contexto do Projeto
-O **Omenortep-AI** é um projeto de especialização de **Small Language Models (SLMs)** para o domínio técnico de **Engenharia de Petróleo e Gás**. 
+O **Petrodora-AI** é um projeto de especialização de **Small Language Models (SLMs)** para o domínio técnico de **Engenharia de Petróleo e Gás**. 
 
 **Missão:** Criar um assistente técnico de alta precisão que rode localmente em hardware doméstico limitado, garantindo 100% de privacidade para manuais e normas técnicas proprietárias.
 
