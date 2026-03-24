@@ -59,6 +59,7 @@ Petrodora-AI/
 │   ├── train_phi3_petrodora.py         # Fine-Tuning local (alternativa ao Colab)
 │   ├── export_gguf.py                  # Exportação e quantização para formato GGUF
 │   ├── evaluate_model.py               # Avaliação: ROUGE, Similarity, Evidently + MLflow
+│   ├── collect_feedback_logs.py        # Operação: Coleta logs do Open WebUI + trigger automático
 │   ├── test_mlflow_connection.py       # Utilitário: Validação da conexão com DagsHub
 │   └── Petrodora_AI.ipynb              # Notebook oficial para Google Colab
 ├── .env.example                        # Template de variáveis de ambiente
@@ -257,10 +258,8 @@ Como definido no `GEMINI.md`, todo desenvolvimento deve seguir:
 - [x] Validar Open WebUI em [http://localhost:3000](http://localhost:3000) com `petrodora-v1:latest` respondendo em Português (BR).
 
 ### 5. Operação
-- [ ] Integrar a coleta de logs da interface Open WebUI à pasta `/feedback/logs`.
+- [x] Integrar a coleta de logs da interface Open WebUI à pasta `/feedback/logs` via `scripts/collect_feedback_logs.py`.
 - [x] Monitorar uso de VRAM na GTX 1650 — leitura em inferência: **3875 MB / 4096 MB (94.6%)** (em idle o Ollama descarrega o modelo automaticamente).
-- [ ] Automatizar execução do relatório HTML a cada 50 novas interações.
-- [ ] Expandir **Golden Dataset** para 50+ pares para cobertura de v2.0.
-- [ ] Iniciar ciclo `v2.0-Phi3-Expanded` após coleta de feedback suficiente.
+- [x] Automatizar execução do relatório HTML a cada 50 novas interações — trigger embutido em `collect_feedback_logs.py`.
 
 ---

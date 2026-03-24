@@ -228,5 +228,8 @@ models/GGUF-Export_gguf/
 # Relatorios HTML do Evidently AI (gerados em runtime, ~3-4MB cada)
 reports/*.html
 
-# Logs de feedback de usuarios (dados operacionais)
-feedback/
+# Dados operacionais de feedback de usuarios — nao subir ao repositorio
+# logs/   : historico de conversas extraido do Open WebUI (dados pessoais)
+# state/  : arquivo de estado de sincronizacao (last_sync_state.json)
+feedback/logs/
+feedback/state/
