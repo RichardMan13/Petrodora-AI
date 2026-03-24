@@ -121,8 +121,8 @@ O sucesso de um modelo especializado depende da qualidade dos dados e da abrang�
   - PDFs Brutos (`/data/raw`) → OCR/Parser (**Docling** primário, **pypdf** fallback) → JSONL-Alpaca (`/data/processed`).
   - Script: `scripts/ocr_extract.py`.
 - **Estruturação (JSONL):** Dataset no padrão Alpaca (`instruction`, `input`, `output`) para instruções técnicas.
-- **Data Augmentation:** Modelos robustos (GPT-4o/Claude) geram variações de perguntas via `scripts/synth_generator.py`.
-- **Divisão Treino/Benchmark:** Script `scripts/split_dataset.py` (razão 80/20).
+- **Data Augmentation:** Modelos robustos (GPT-4o) geram variações de perguntas: `python scripts/synth_generator.py`.
+- **Divisão Treino/Benchmark:** Separação final 80/20: `python scripts/prepare_datasets.py`.
 
 ### Fase 2: Fine-Tuning com Unsloth (Google Colab)
 
@@ -144,10 +144,11 @@ O sucesso de um modelo especializado depende da qualidade dos dados e da abrang�
 
 - **Hardware de Destino:** NVIDIA GeForce GTX 1650 (4 GB VRAM).
 - **Procedimento:**
-  1. Garantir que o arquivo `.gguf` esteja em `models/`.
-  2. O `Modelfile` já está configurado em `models/Modelfile` com o System Prompt do Engenheiro Sênior.
-  3. Registrar o modelo: `ollama create petrodora-v1 -f models/Modelfile`.
-  4. Rodar via CLI: `ollama run petrodora-v1`.
+  1. Garantir que o Ollama esteja em execução (ícone visível na barra de tarefas).
+  2. Garantir que o arquivo `.gguf` esteja na pasta `models/`.
+  3. O `Modelfile` já está configurado em `models/Modelfile`.
+  4. Registrar o modelo: `ollama create petrodora-v1 -f models/Modelfile`.
+  5. Testar via CLI: `ollama run petrodora-v1`.
 - **Interface (Open WebUI):** `docker compose up -d` — acesse em [http://localhost:3000](http://localhost:3000) e selecione `petrodora-v1` no seletor de modelos.
 - **Notas do `docker-compose.yml`:**
   - `env_file` removido — o Docker Compose interpola `${VAR}` do `.env` automaticamente no bloco `environment`, sem expor credenciais desnecessárias ao container.
@@ -231,8 +232,8 @@ Como definido no `GEMINI.md`, todo desenvolvimento deve seguir:
 - [x] Mapear diretórios de manuais técnicos (PDFs) para `/data/raw`.
 - [x] Implementar `scripts/ocr_extract.py` com Docling (primário) e pypdf (fallback).
 - [x] Estruturar dataset inicial em `/data/processed/processed_knowledge.jsonl`.
-- [x] Data Augmentation via `scripts/synth_generator.py` (100 pares via GPT-4o).
-- [x] Separar dataset: treino (80) em `training_data.jsonl` e benchmark (20) em `golden_dataset.jsonl` via `scripts/split_dataset.py`.
+- [x] Data Augmentation via `python scripts/synth_generator.py` (100 pares via GPT-4o).
+- [x] Separar dataset (treino/benchmark) via `python scripts/prepare_datasets.py`.
 
 ### 2. Fine-Tuning & Tracking (Fase 2, 3 & 6)
 - [x] Configurar conta no **DagsHub** e obter as credenciais do MLflow.
@@ -259,7 +260,7 @@ Como definido no `GEMINI.md`, todo desenvolvimento deve seguir:
 
 ### 5. Operação
 - [x] Integrar a coleta de logs da interface Open WebUI à pasta `/feedback/logs` via `scripts/collect_feedback_logs.py`.
-- [x] Monitorar uso de VRAM na GTX 1650 — leitura em inferência: **3875 MB / 4096 MB (94.6%)** (em idle o Ollama descarrega o modelo automaticamente).
+- [x] Monitorar uso de VRAM na GTX 1650 — leitura em inferência: **3852 MB / 4096 MB (94.0%)** (em idle o Ollama descarrega o modelo automaticamente).
 - [x] Automatizar execução do relatório HTML a cada 50 novas interações — trigger embutido em `collect_feedback_logs.py`.
 
 ---

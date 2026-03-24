@@ -15,8 +15,9 @@ services:
     volumes:
       - open-webui:/app/backend/data
     healthcheck:
-      # Aguarda 120s antes de iniciar os checks — necessario no primeiro boot
-      # (migracoes de DB + download de modelos de embedding)
+      # O comando 'test' e obrigatorio para que o healthcheck funcione.
+      # Porta 8080 e a porta interna do container ghcr.io/open-webui/open-webui.
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       start_period: 120s
       interval: 30s
       timeout: 10s

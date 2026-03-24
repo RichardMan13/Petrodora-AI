@@ -1,0 +1,42 @@
+# .dockerignore: Exclui arquivos irrelevantes do build context do Docker.
+# Segue a Regra 3 de .gemini/rules/docker.mdc
+
+# Git
+.git
+.gitignore
+
+# Ambiente e Segredos
+.env
+.env.example
+.venv
+venv
+ENV
+
+# Dados proprietarios e pesados (Bases de Petroleo)
+data/raw/
+data/processed/
+data/benchmark_results.csv
+
+# Modelos e Binarios pesados (> 2GB)
+models/
+*.gguf
+!models/Modelfile
+
+# Relatorios e Logs
+reports/*.html
+feedback/logs/
+feedback/state/
+
+# Documentacao e Regras de IA
+README.md
+GEMINI.md
+.gemini/
+
+# Docker e Infra
+Dockerfile
+docker-compose*.yml
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
